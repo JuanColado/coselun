@@ -1,0 +1,86 @@
+:root { color-scheme: light; }
+body { font-size: 16px; }
+.header { gap: 20px; }
+.header-actions { display: flex; align-items: center; gap: 11px; flex: none; }
+.header nav { font-size: 14px; }
+.header-cta, .button { font-size: 14px; }
+.theme-toggle { display: inline-flex; align-items: center; gap: 7px; min-height: 43px;
+  padding: 9px 13px; border: 1px solid #cbdcde; border-radius: 11px;
+  background: #fff; color: #135b5b; font: 650 14px/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
+  cursor: pointer; box-shadow: 0 6px 18px #0d3e4a12; transition: transform .2s, background .2s, border-color .2s; }
+.theme-toggle span:first-child { font-size: 20px; line-height: 1; }
+.theme-toggle:hover { transform: translateY(-2px); background: #eaf5f2; border-color: #83bdb2; }
+.eyebrow { font-size: 12px; }
+.hero-description { font-size: 18px; }
+.hero-note, .quiet-link, .intro-strip p, .intro-strip>.wrap>span { font-size: 13px; }
+.visual-header, .visual-caption, .demo-label { font-size: 10px; }
+.chat-header strong { font-size: 14px; }
+.chat-header>div>span, .chat-badge { font-size: 11px; }
+.message { font-size: 13px; }
+.message time, .source-note { font-size: 10px; }
+.chat-options button, .chat-footer { font-size: 11px; }
+.floating-note strong { font-size: 13px; }
+.floating-note small { font-size: 11px; }
+.services-heading>p:last-child, .section-copy { font-size: 16px; }
+.service-card p, .proposal-list p, .channels-inner>div>p:last-child,
+.steps p, .faq details p, .contact p:not(.eyebrow), .section-heading>p,
+.legal p, .legal li { font-size: 15px; }
+.service-index, .channels-note, .contact-actions small { font-size: 12px !important; }
+.channels-list strong, .channels-list small, .status { font-size: 13px; }
+.faq summary { font-size: 16px; }
+.contact-email { font-size: 15px; }
+.footer>p, .footer>div, .footer button, .footer #privacy, .footer>.brand-note { font-size: 12px; }
+.legal-updated { font-size: 13px; }
+.service-card, .steps article, .channels-list article { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.service-card:hover { transform: translateY(-5px); box-shadow: 0 22px 48px #12344922; }
+.steps article:hover { transform: translateY(-3px); }
+.hero-visual { background: radial-gradient(circle at 85% 13%, #2d9c91 0, transparent 34%), linear-gradient(145deg, #102a3d, #176b68); }
+.header { backdrop-filter: blur(16px); border-radius: 0 0 15px 15px; }
+:is(button, a, summary):focus-visible { outline: 3px solid #159889; outline-offset: 3px; }
+
+:root[data-theme='dark'] { color-scheme: dark; --ink: #edf7f8; --muted: #bed0d6; --paper: #101e29; --line: #355061; --soft: #203c46; }
+[data-theme='dark'] body { background: radial-gradient(circle at 74% 8%, #194f50 0, transparent 29%), #101e29; color: #edf7f8; }
+[data-theme='dark'] .header { background: #162a37e8; border-color: #35515d; }
+[data-theme='dark'] .header nav { color: #c4dde2; }
+[data-theme='dark'] .quiet-link, [data-theme='dark'] .eyebrow { color: #e5c18c; }
+[data-theme='dark'] .quiet-link:hover { color: #a6f0df; }
+[data-theme='dark'] .header-cta, [data-theme='dark'] .theme-toggle { background: #23414c; border-color: #4a7078; color: #e5f6f4; }
+[data-theme='dark'] .header-cta:hover, [data-theme='dark'] .theme-toggle:hover { background: #315765; }
+[data-theme='dark'] .hero-description, [data-theme='dark'] .hero-note,
+[data-theme='dark'] .section-copy, [data-theme='dark'] .services-heading>p:last-child,
+[data-theme='dark'] .proposal-list p, [data-theme='dark'] .steps p,
+[data-theme='dark'] .faq details p, [data-theme='dark'] .legal p,
+[data-theme='dark'] .legal li, [data-theme='dark'] .legal-lead { color: #bfd0d5; }
+[data-theme='dark'] h1, [data-theme='dark'] h2, [data-theme='dark'] h3,
+[data-theme='dark'] .faq summary, [data-theme='dark'] .legal strong { color: #eef8fa; }
+[data-theme='dark'] h1 em, [data-theme='dark'] h2 em { color: #83dbcb; }
+[data-theme='dark'] .service-card { background: #1d3441; border-color: #3a5964; box-shadow: 0 13px 35px #030c1566; }
+[data-theme='dark'] .service-card.highlighted { background: linear-gradient(150deg, #185359, #173947); }
+[data-theme='dark'] .service-card p { color: #c5d7db; }
+[data-theme='dark'] .service-card.highlighted p { color: #d7e8ea; }
+[data-theme='dark'] .service-symbol { background: #285a5c; color: #d4f9ef; }
+[data-theme='dark'] .intro-strip, [data-theme='dark'] .channels-section { background: #172e3b; border-color: #365562; }
+[data-theme='dark'] .intro-strip p, [data-theme='dark'] .intro-strip strong,
+[data-theme='dark'] .channels-inner>div>p:last-child,
+[data-theme='dark'] .channels-list small, [data-theme='dark'] .channels-note { color: #c4d9dc; }
+[data-theme='dark'] .channels-list article, [data-theme='dark'] .faq,
+[data-theme='dark'] .faq details, [data-theme='dark'] .proposal-list article,
+[data-theme='dark'] .steps article, [data-theme='dark'] .legal section { border-color: #3d5a65; }
+[data-theme='dark'] .status { background: #284a53; border-color: #5b7e83; color: #e4f2f2; }
+[data-theme='dark'] .contact { background: linear-gradient(135deg, #153a4b, #0e5553); }
+[data-theme='dark'] .legal a:not(.brand) { color: #8ee0cc; }
+[data-theme='dark'] .footer>p, [data-theme='dark'] .footer>div,
+[data-theme='dark'] .footer>.brand-note { color: #b3cbd1; }
+/* The illustrative conversation stays light in either theme to resemble a real chat interface. */
+[data-theme='dark'] .chat-window, [data-theme='dark'] .floating-note { color: #173344; }
+@media(max-width: 760px) {
+  .header { flex-wrap: wrap; }
+  .header-actions { margin-left: auto; }
+  .theme-toggle { min-width: 43px; padding: 9px; justify-content: center; }
+  .theme-toggle span:last-child { display: none; }
+  .hero-description { font-size: 17px; }
+  .eyebrow { font-size: 11px; }
+  .channels-list small, .status, .faq summary { font-size: 13px; }
+  .message { font-size: 13px; }
+}
+@media(prefers-reduced-motion: reduce) { .service-card, .steps article, .theme-toggle { transition: none; } }

@@ -1,4 +1,23 @@
 'use strict';
+const themeKey='coselun-theme';
+let chosenTheme='light';
+try{chosenTheme=localStorage.getItem(themeKey)==='dark'?'dark':'light';}catch{}
+function applyTheme(theme){
+  document.documentElement.dataset.theme=theme;
+  document.querySelectorAll('.theme-toggle').forEach(button=>{
+    const dark=theme==='dark';
+    button.setAttribute('aria-label',dark?'Cambiar a modo claro':'Cambiar a modo oscuro');
+    button.setAttribute('aria-pressed',String(dark));
+    button.querySelector('span:first-child').textContent=dark?'☀':'☾';
+    button.querySelector('span:last-child').textContent=dark?'Claro':'Oscuro';
+  });
+}
+applyTheme(chosenTheme);
+document.querySelectorAll('.theme-toggle').forEach(button=>button.addEventListener('click',()=>{
+  chosenTheme=chosenTheme==='dark'?'light':'dark';
+  try{localStorage.setItem(themeKey,chosenTheme);}catch{}
+  applyTheme(chosenTheme);
+}));
 const examples={
   horarios:{question:'¡Hola! ¿Hasta qué hora están abiertos?',answer:'¡Hola! En este ejemplo, atendemos de lunes a viernes de 9 a 18. ¿Querés saber cómo retirar tu pedido?',source:'Basado en los horarios del negocio'},
   precios:{question:'¿Cuánto sale el cuaderno?',answer:'En nuestra tienda de ejemplo, el cuaderno cuesta $8.000. Es un precio ficticio para mostrar cómo se usaría tu lista de productos.',source:'Basado en una lista de precios de ejemplo'},
