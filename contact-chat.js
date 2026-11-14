@@ -1,0 +1,20 @@
+(() => {
+  'use strict';
+  const root=document.createElement('div');root.className='contact-chat';
+  root.innerHTML=`<section class="contact-chat-panel" id="contact-chat-panel" aria-label="Consulta a COSELUN" hidden><header><div><strong>Hola, somos COSELUN</strong><small>Respuestas frecuentes y contacto con Juan</small></div><button type="button" class="contact-chat-close" aria-label="Cerrar chat">×</button></header><div class="contact-chat-messages" role="log" aria-live="polite"><p class="contact-chat-bubble">¡Hola! Soy el asistente de consultas frecuentes de COSELUN. Podés preguntarme por servicios, precios o una demostración.</p></div><div class="contact-chat-options" aria-label="Preguntas frecuentes"><button type="button" data-question="¿Qué servicios ofrecen?">Servicios</button><button type="button" data-question="¿Cuánto cuesta?">Precios</button><button type="button" data-question="¿Puedo ver una demostración?">Demostración</button></div><form><label for="contact-chat-input">Tu consulta</label><textarea id="contact-chat-input" rows="2" maxlength="600" placeholder="Escribí tu pregunta" required></textarea><button class="contact-chat-send" type="submit">Consultar</button></form><footer><p>Las respuestas son automáticas y se muestran en tu navegador. Para escribirle a Juan, continuá por WhatsApp y enviá allí tu mensaje.</p><a class="contact-chat-whatsapp" href="https://wa.me/5491134870246?text=Hola%20Juan%2C%20quiero%20consultar%20por%20COSELUN." target="_blank" rel="noopener noreferrer">Hablar con Juan por WhatsApp ↗</a><a class="contact-chat-privacy" href="privacidad.html">Privacidad</a></footer></section><button type="button" class="contact-chat-launch" aria-expanded="false" aria-controls="contact-chat-panel">✦ ¿Hablamos?</button>`;
+  document.body.append(root);
+  const panel=root.querySelector('.contact-chat-panel'),launch=root.querySelector('.contact-chat-launch'),close=root.querySelector('.contact-chat-close'),messages=root.querySelector('.contact-chat-messages'),field=root.querySelector('textarea'),link=root.querySelector('.contact-chat-whatsapp');
+  const answers=[
+    [/precio|costo|cu[aá]nto|presupuesto|plan/i,'Cada propuesta se prepara según los canales y lo que necesite tu negocio. Contanos tu idea y Juan podrá enviarte un presupuesto.'],
+    [/demo|demostraci[oó]n|prueba|probar/i,'Podemos conversar sobre una demostración de la bandeja y del asistente. Escribile a Juan para coordinarla.'],
+    [/whatsapp|instagram|facebook|redes|canal/i,'Estamos preparando conexiones para distintos canales. La disponibilidad de cada red se confirma antes de implementar el servicio.'],
+    [/servicio|chatbot|asistente|bandeja|automatiza/i,'COSELUN está desarrollando una bandeja unificada y asistentes para responder consultas frecuentes. Podemos conversar sobre el alcance que necesita tu negocio.']
+  ];
+  function add(text,own){const item=document.createElement('p');item.className='contact-chat-bubble'+(own?' is-own':'');item.textContent=text;messages.append(item);messages.scrollTop=messages.scrollHeight;}
+  function reply(question){const text=question.trim();if(!text)return;add(text,true);const match=answers.find(([pattern])=>pattern.test(text));add(match?match[1]:'No tengo una respuesta preparada para esa consulta. Podés hablar con Juan por WhatsApp para que te ayude.');link.href='https://wa.me/5491134870246?text='+encodeURIComponent('Hola Juan, consulto por COSELUN: '+text);}
+  function setOpen(open){panel.hidden=!open;launch.setAttribute('aria-expanded',String(open));if(open)close.focus();else launch.focus();}
+  launch.addEventListener('click',()=>setOpen(panel.hidden));close.addEventListener('click',()=>setOpen(false));
+  root.addEventListener('keydown',event=>{if(event.key==='Escape'&&!panel.hidden)setOpen(false);});
+  root.querySelector('form').addEventListener('submit',event=>{event.preventDefault();reply(field.value);field.value='';});
+  root.querySelectorAll('[data-question]').forEach(button=>button.addEventListener('click',()=>reply(button.dataset.question)));
+})();
